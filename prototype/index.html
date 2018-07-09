@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0;" />
+    </head>
+    <body>
+        <br/>
+        
+        <button onclick="sendCount()">Show Click Count</button>
+        <br/>
+        <br/>
+        <p id="resultDisplay">Result Display</p>
+        <br/>
+        <script>
+            var count = 0
+            
+            function sendCount(){
+                var message = {"count":count}
+                window.webkit.messageHandlers.interOp.postMessage(message)
+            }
+        
+            function storeAndShow(updatedCount){
+                document.querySelector("#resultDisplay").innerHTML = 'came back'
+                count = updatedCount
+                document.querySelector("#resultDisplay").innerHTML = count
+                return count
+            }
+        </script>
+    </body>
+</html>
+
